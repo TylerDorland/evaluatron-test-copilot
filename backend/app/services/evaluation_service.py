@@ -60,8 +60,8 @@ class EvaluationService:
             # Simple clarity score (inverted complexity)
             # Shorter sentences and shorter words = higher clarity
             # Normalize to 0-1 scale
-            sentence_score = max(0, 1 - (avg_sentence_length - 10) / 30)
-            word_score = max(0, 1 - (avg_word_length - 4) / 6)
+            sentence_score = max(0, min(1, 1 - (avg_sentence_length - 10) / 30))
+            word_score = max(0, min(1, 1 - (avg_word_length - 4) / 6))
             clarity_score = (sentence_score + word_score) / 2
             
             return {
